@@ -92,4 +92,26 @@ ol li.down {
     display: block;
     line-height: 42px;
 }
+.keyboard li img {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}
+.keyboard li button {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    border: none;
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    display: none;
+    outline: none;
+    cursor: pointer;
+}
+.keyboard li:hover button {
+    display: block;
+}
 
