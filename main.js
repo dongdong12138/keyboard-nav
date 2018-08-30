@@ -93,7 +93,7 @@ var hash = {
     'S': 'www.suning.com/',
     'D': 'book.dangdang.com/',
     'F': 'www.ifeng.com/',
-    'G': 'github.com/',
+    'G': 'www.gaokao.com/',
     'H': 'www.firefox.com.cn/',
     'J': 'www.jd.com/',
     'K': 'www.kugou.com/',
@@ -207,13 +207,17 @@ for (var i = 0; i < 64; i ++) {
             var img2 = button2.previousSibling;
             var key = button2['id'];
             var webSite = prompt('请输入网址');
-            hash[key] = webSite;    // hash 变更
+            hash[key] = webSite + '/';    // hash 变更
+            // console.log(hash[key]);
             
             img2.src = 'http://' + webSite + '/favicon.ico';
+
+            console.log(img2.src);
             img2.onerror = function (event) {
                 event.target.src = '//i.loli.net/2018/08/29/5b863395bca68.png';
                 
             };
+            // JSON.stringify(hash) = JSON.stringify(hash) + '/';
             localStorage.setItem('zzz', JSON.stringify(hash)); 
 
             
@@ -235,6 +239,12 @@ for (var i = 0; i < 64; i ++) {
     
 
 }
+var zhihu = document.createElement('a');
+zhihu.textContent = '知 乎';
+zhihu.href = 'https://www.zhihu.com/people/dongdong12138/posts';
+zhihu.target = '_blank';
+zhihu.title = '前往我的知乎';
+header.appendChild(zhihu);
 
 
 
