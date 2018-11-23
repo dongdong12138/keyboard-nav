@@ -79,32 +79,32 @@ var keyboard = {
 
 // 保存按键对应的网址
 var hash = {
-    'Q': 'www.qq.com/',
-    'W': 'weibo.com/',
-    'E': 'mail.163.com/',
-    'R': 'www.renren.com/',
-    'T': 'www.taptap.com/',
-    'Y': 'www.yahoo.com/',
-    'U': 'www.uc.cn/',
-    'I': 'www.iqiyi.com/',
-    'O': 'www.oppo.com/cn/',
-    'P': 'www.apple.com/',
-    'A': 'www.alibaba.com/',
-    'S': 'www.suning.com/',
-    'D': 'book.dangdang.com/',
-    'F': 'www.ifeng.com/',
-    'G': 'www.gaokao.com/',
-    'H': 'www.firefox.com.cn/',
-    'J': 'www.jd.com/',
-    'K': 'www.kugou.com/',
-    'L': 'lol.qq.com/',
-    'Z': 'www.zhihu.com/',
-    'X': 'www.panda.tv/',
-    'C': 'cf.qq.com/',
-    'V': 'code.visualstudio.com/',
-    'B': 'www.bilibili.com/',
-    'N': 'www.nipic.com/',
-    'M': 'www.imooc.com/'
+    'Q': 'qq.com',
+    'W': 'weibo.com',
+    'E': '163.com',
+    'R': 'renren.com',
+    'T': 'taptap.com',
+    'Y': 'yahoo.com',
+    'U': 'uc.cn',
+    'I': 'iqiyi.com',
+    'O': 'oppo.com/cn',
+    'P': 'apple.com',
+    'A': 'alibaba.com',
+    'S': 'suning.com',
+    'D': 'book.dangdang.com',
+    'F': 'ifeng.com',
+    'G': 'gaokao.com',
+    'H': 'firefox.com.cn',
+    'J': 'jd.com',
+    'K': 'kugou.com',
+    'L': 'lol.qq.com',
+    'Z': 'zhihu.com',
+    'X': 'panda.tv',
+    'C': 'cf.qq.com',
+    'V': 'code.visualstudio.com',
+    'B': 'bilibili.com',
+    'N': 'nipic.com',
+    'M': 'imooc.com'
 };
 
 // 取出localStorage中的zzz对应的hash，并存到hash中
@@ -187,7 +187,7 @@ for (var i = 0; i < 64; i ++) {
         li.replaceChild(img, kbd);
         var txt = img.previousElementSibling.textContent;
         if (hash[txt]) {
-            img.src = 'http://' + hash[txt] + 'favicon.ico';
+            img.src = 'http://www.' + hash[txt] + '/favicon.ico';
         } else {
             img.src = '//i.loli.net/2018/08/29/5b863395bca68.png';
         }
@@ -200,17 +200,14 @@ for (var i = 0; i < 64; i ++) {
         button.textContent = '编辑';
         button.id = li.firstElementChild.textContent;
         button.onclick = function (event) {
-
-            
-
             var button2 = event['target'];
             var img2 = button2.previousSibling;
             var key = button2['id'];
             var webSite = prompt('请输入网址');
-            hash[key] = webSite + '/';    // hash 变更
+            hash[key] = webSite;    // hash 变更
             // console.log(hash[key]);
             
-            img2.src = 'http://' + webSite + '/favicon.ico';
+            img2.src = 'http://www.' + webSite + '/favicon.ico';
 
             console.log(img2.src);
             img2.onerror = function (event) {
