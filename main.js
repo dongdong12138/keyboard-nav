@@ -11,48 +11,19 @@ var ol = document.createElement('ol');  // 生成ol
 ol.className = 'keyboard';
 
 for (var i = 0; i < 64; i++) {
-    var li = document.createElement('li');  // 生成64个li
-    if (i === 13 || i >= 53 && i <= 59) {
-        li.className = 'special';
-    }
-    if (i === 14) {
-        li.className = 'special tab';
-    }
-    if (i === 28) {
-        li.className = 'special caps';
-    }
-    if (i === 40) {
-        li.className = 'special enter';
-    }
-    if (i === 41 || i === 52) {
-        li.className = 'special shift';
-    }
-    if (i >= 53 && i <= 59) {
-        li.className = 'special tall';
-    }
-    if (i === 56 || i === 58) {
-        li.className = 'special tall alt';
-    }
-    if (i === 57) {
-        li.className = 'special tall space';
-    }
-    if (i >= 60 && i <= 63) {
-        li.className = 'arrow';
-    }
-    if (i === 60) {
-        li.className = 'arrow up';
-    }
-    if (i === 62) {
-        li.className = 'arrow down';
-    }
+    // 生成64个li
+    var li = document.createElement('li');  
 
-    var span = document.createElement('span');  // 生成span
-    var kbd = document.createElement('kbd');    // 生成kbd
+    // 判断 li
+    decideLi()
 
-    // 创建img
-    var img = document.createElement('img');
-
+    // 生成span
+    var span = document.createElement('span');    
     span.textContent = newArr[i]['text'];
+
+    // 生成kbd
+    var kbd = document.createElement('kbd');    
+
     if (newArr[i]['text2']) {
         kbd.textContent += newArr[i]['text2'];
     }
@@ -60,6 +31,8 @@ for (var i = 0; i < 64; i++) {
     li.appendChild(span);
     li.appendChild(kbd);
 
+    // 创建img
+    var img = document.createElement('img');
     // 把字母按键的kbd替换成img
     if (i >= 15 && i <= 24 || i >= 29 && i <= 37 || i >= 42 && i <= 48) {
 
@@ -74,38 +47,14 @@ for (var i = 0; i < 64; i++) {
             event.target.src = '//i.loli.net/2018/08/29/5b863395bca68.png';
         };
 
+        // 创建 button
+        var button = createButton('button')
 
-        var button = document.createElement('button');
-        button.textContent = '编辑';
-        button.id = li.firstElementChild.textContent;
-        button.onclick = function (event) {
-            var button2 = event['target'];
-            var img2 = button2.previousSibling;
-            var key = button2['id'];
-            var webSite = prompt('请输入新网址，如："qq.com"');
-            if (webSite !== null && webSite !== '') {
-                hash[key] = webSite;    // hash 变更
-                img2.src = 'http://www.' + webSite + '/favicon.ico';
-
-                console.log(img2.src);
-                img2.onerror = function (event) {
-                    event.target.src = '//i.loli.net/2018/08/29/5b863395bca68.png';
-
-                };
-            }
-
-
-            localStorage.setItem('zzz', JSON.stringify(hash));
-
-            stopBubble(this)
-
-        };
         li.appendChild(button);
     }
 
     ol.appendChild(li);
 }
-
 
 main.appendChild(ol);
 
@@ -287,4 +236,63 @@ function linktoZhihu(element) {
     zhihu.target = '_blank';
     zhihu.title = '前往我的知乎';
     header.appendChild(zhihu);
+}
+
+function createButton(element) {
+    var button = document.createElement(element);
+    button.textContent = '编辑';
+    button.id = li.firstElementChild.textContent;
+    button.onclick = function (event) {
+        var button2 = event['target'];
+        var img2 = button2.previousSibling;
+        var key = button2['id'];
+        var webSite = prompt('请输入新网址，如："qq.com"');
+        if (webSite !== null && webSite !== '') {
+            hash[key] = webSite;    // hash 变更
+            img2.src = 'http://www.' + webSite + '/favicon.ico';
+            img2.onerror = function (event) {
+                event.target.src = '//i.loli.net/2018/08/29/5b863395bca68.png';
+
+            };
+        }
+        localStorage.setItem('zzz', JSON.stringify(hash));
+        stopBubble(this)
+    };
+    return button
+}
+
+function decideLi() {
+    if (i === 13 || i >= 53 && i <= 59) {
+        li.className = 'special';
+    }
+    if (i === 14) {
+        li.className = 'special tab';
+    }
+    if (i === 28) {
+        li.className = 'special caps';
+    }
+    if (i === 40) {
+        li.className = 'special enter';
+    }
+    if (i === 41 || i === 52) {
+        li.className = 'special shift';
+    }
+    if (i >= 53 && i <= 59) {
+        li.className = 'special tall';
+    }
+    if (i === 56 || i === 58) {
+        li.className = 'special tall alt';
+    }
+    if (i === 57) {
+        li.className = 'special tall space';
+    }
+    if (i >= 60 && i <= 63) {
+        li.className = 'arrow';
+    }
+    if (i === 60) {
+        li.className = 'arrow up';
+    }
+    if (i === 62) {
+        li.className = 'arrow down';
+    }
 }
