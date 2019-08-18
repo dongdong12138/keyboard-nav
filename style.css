@@ -30,6 +30,7 @@ ol {
     padding: 100px 0 100px 40px;
     background-repeat: no-repeat;
     margin: 0 auto;
+    width: 1220px;
 }
 ol::after {
     content: "";
